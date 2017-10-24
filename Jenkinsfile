@@ -2,7 +2,7 @@ podTemplate(label: 'pod-dromedary',
     containers: [
         containerTemplate(
             name: 'dromedary',
-            image: 'lok-dromedary',
+            image: 'liatrio/lok-dromedary:0.1.0',
             ttyEnabled: true,
             command: 'cat',
             ports: [portMapping(name: 'service', containerPort: 8080, hostPort: 18080)]
