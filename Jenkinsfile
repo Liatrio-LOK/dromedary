@@ -10,7 +10,11 @@ podTemplate(label: 'pod-dromedary',
     ]) {
     node ('pod-dromedary') {
       stage('Run dromedary'){
-          container('dromedary') 
+        git url: 'https://github.com/Liatrio-LOK/dromedary.git', branch: 'LOK-31-minimal-pipeline'
+          container('dromedary') {
+            sh("npm install gulp -g")
+            sh("gulp")
+          }
       }
     }
 }
