@@ -18,4 +18,8 @@ podTemplate(label: 'pod-dromedary',
           }
       }
     }
+    stage('build image'){
+      git url: 'https://github.com/Liatrio-LOK/dromedary.git'
+      sh("docker build . -t liatrio_cloud_servies/dromedary:test")
+    }
 }
