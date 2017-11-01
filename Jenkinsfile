@@ -6,7 +6,7 @@ podTemplate(label: 'pod-dromedary',
             ttyEnabled: true,
             command: 'cat'
         )
-    ]) {
+    ]){
     node ('pod-dromedary') {
       stage('Run dromedary'){
           git url: 'https://github.com/Liatrio-LOK/dromedary.git'
@@ -18,8 +18,10 @@ podTemplate(label: 'pod-dromedary',
           }
       }
     }
+    node ('master') {
     stage('build image'){
-      git url: 'https://github.com/Liatrio-LOK/dromedary.git'
-      sh("docker build . -t liatrio_cloud_servies/dromedary:test")
+        sh("docker login 10.0.0.69:8082 -u Liatrio -p Test")
+        sh("docker push 10.0.0.69:8082/docket:test")
     }
+  }
 }
